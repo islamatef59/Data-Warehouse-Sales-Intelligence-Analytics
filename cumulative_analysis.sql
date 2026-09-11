@@ -1,11 +1,9 @@
 /*
-===============================================================================
-Cumulative Analysis
-===============================================================================
+Cumulative & Yearly Trend Analysis
 Purpose:
-    - To calculate running totals or moving averages for key metrics.
-    - To track performance over time cumulatively.
-    - Useful for growth analysis or identifying long-term trends.
+- Aggregate sales metrics by year from the sales fact table.
+- Calculate running total of sales over time to track cumulative revenue growth.
+- Calculate cumulative moving average price across consecutive years.
 */
 SELECT 
 	order_date,
