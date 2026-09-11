@@ -1,12 +1,7 @@
 # Data Warehouse Sales Intelligence & Analytics 
 
-![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-red?style=for-the-badge&logo=microsoftsqlserver)
-![T-SQL](https://img.shields.io/badge/Language-T--SQL-blue?style=for-the-badge)
-![Data Architecture](https://img.shields.io/badge/Architecture-Medallion%20(Gold%20Layer)-gold?style=for-the-badge)
-![Analytics](https://img.shields.io/badge/Focus-Business%20Intelligence%20%26%20EDA-green?style=for-the-badge)
-
-## Executive Summary
-This repository contains a production-grade T-SQL analytical engine designed to extract actionable business insights from an enterprise Sales Data Warehouse (Gold Layer). The analytics suite performs deep exploratory data analysis (EDA), measure aggregations, time-series analysis, revenue contribution share, and Year-over-Year (YoY) performance benchmarking across customer demographics, product categories, and sales performance channels.
+## Project Overview
+This repository contains a A collection of T-SQL queries for analyzing sales data warehouse trends. T-SQL analytical engine designed to extract actionable business insights from an enterprise Sales Data Warehouse (Gold Layer). The analytics suite performs deep exploratory data analysis (EDA), measure aggregations, time-series analysis, revenue contribution share, and Year-over-Year (YoY) performance benchmarking across customer demographics, product categories, and sales performance channels.
 
 ---
 
