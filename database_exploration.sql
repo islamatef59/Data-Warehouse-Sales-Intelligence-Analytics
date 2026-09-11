@@ -1,8 +1,11 @@
--- Retrieve a list of all tables in the database
+/*
+Table Structure & Data Dictionary Metadata
+Purpose:
+- Inspect column specifications and schema details for 'dim_customers'.
+- Retrieve metadata including column names, data types, nullability,
+and maximum character limits.
+*/
 
-SELECT * FROM INFORMATION_SCHEMA.TABLES
-
--- Retrieve all columns for a specific table (dim_customers)
 SELECT 
     COLUMN_NAME, 
     DATA_TYPE, 

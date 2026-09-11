@@ -3,25 +3,25 @@
 Magnitude Analysis
 ===============================================================================
 
-Purpose:
+
     - To quantify data and group results by specific dimensions.
-    - For understanding data distribution across categories.
+    -  data distribution across categories.
 */
-SELECT * FROM gold.dim_customers
+SELECT TOP 10 * FROM gold.dim_customers
 
 -- Find total customers by countries
 SELECT 
 COUNT ( DISTINCT customer_key) AS total_customers,
-cntry 
+country 
 FROM gold.dim_customers
-GROUP BY cntry
+GROUP BY country
 ORDER BY total_customers DESC
 -- Find total customers by gender
 SELECT 
 COUNT(customer_key) AS total_customers,
-NEW_GEN
+Gender
 FROM gold.dim_customers
-GROUP BY NEW_GEN
+GROUP BY Gender
 ORDER BY total_customers DESC
 
 -- Find total products by category
@@ -55,24 +55,24 @@ ORDER BY total_revenue DESC;
 SELECT 
 SUM(f.sales_amount) AS total_revenu,
 c.customer_key,
-c.cst_firstname,
-c.cst_lastname
+c.First_name,
+c.Last_name
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
 ON f.customer_key=c.customer_key
 GROUP BY
 c.customer_key,
-c.cst_firstname,
-c.cst_lastname
+c.First_name,
+c.Last_name
 ORDER BY total_revenu DESC
 
 -- What is the distribution of sold products across countries?
 
 SELECT 
-c.cntry AS Countries,
+c.Country AS Countries,
 COUNT(DISTINCT f.product_key) AS total_number_of_sold_products
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
 ON f.customer_key=c.customer_key
-GROUP BY c.cntry 
-ORDER BY c.cntry
+GROUP BY c.Country 
+ORDER BY c.Country

@@ -2,13 +2,15 @@
 ===============================================================================
 Change Over Time Analysis
 ===============================================================================
+Monthly Sales & Performance Aggregation Techniques
 Purpose:
-    - To track trends, growth, and changes in key metrics over time.
-    - For time-series analysis and identifying seasonality.
-    - To measure growth or decline over specific periods.
+- Aggregate monthly sales performance metrics including revenue, customer
+reach, and quantity sold.
+- Demonstrate and compare three different T-SQL date-grouping approaches:
+1. YEAR() and MONTH() functions.
+2. DATETRUNC() for date truncation (SQL Server 2022+).
+3. FORMAT() for custom formatted string representations.
 */
--- Quick Date Functions
-
 SELECT 
 	 YEAR(order_date) AS order_year,
 	 MONTH(order_date) AS order_month,

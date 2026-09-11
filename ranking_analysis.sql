@@ -1,3 +1,11 @@
+/*
+Ranking & Top/Bottom Analysis
+Purpose:
+- Identify top-performing products and customers based on revenue generation.
+- Rank products using both standard aggregation with TOP clauses and window functions (RANK).
+- Identify worst-performing products and lowest-engagement customers to target retention or optimization efforts.
+*/
+
 -- Which 5 products Generating the Highest Reve
 SELECT TOP 5
 	 P.product_name,
@@ -8,7 +16,6 @@ FROM gold.fact_sales F
 	GROUP BY P.product_name
 	ORDER BY total_revenu DESC
 
-SELECT * FROM gold.fact_sales
 --Ranking Using Window Functions
 SELECT* 
 FROM(
@@ -36,23 +43,23 @@ FROM gold.fact_sales F
 -- Find the top 10 customers who have generated the highest revenue
 SELECT TOP 10
 	c.customer_key,
-	c.cst_firstname,
-	c.cst_lastname,
+	c.first_name,
+	c.last_name,
 	SUM(f.sales_amount) AS Revenu
 FROM gold.dim_customers c
 	LEFT JOIN gold.fact_sales f
 	ON c.customer_key=f.customer_key
-	GROUP BY c.customer_key, c.cst_firstname, c.cst_lastname
+	GROUP BY c.customer_key, c.first_name, c.last_name
 	ORDER BY Revenu DESC
 
 -- The 3 customers with the fewest orders placed
 SELECT  TOP 3
 	c.customer_key,
-	c.cst_firstname,
-	c.cst_lastname,
+	c.first_name,
+	c.last_name,
 	COUNT(DISTINCT f.order_number) AS orders_palced
 FROM gold.dim_customers c
 	LEFT JOIN gold.fact_sales f
 	ON c.customer_key=f.customer_key
-	GROUP BY c.customer_key, c.cst_firstname, c.cst_lastname
+	GROUP BY c.customer_key, c.first_name, c.last_name
 	ORDER BY orders_palced 

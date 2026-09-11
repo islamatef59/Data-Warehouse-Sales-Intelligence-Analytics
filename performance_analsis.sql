@@ -3,10 +3,11 @@
 Performance Analysis (Year-over-Year, Month-over-Month)
 ===============================================================================
 Purpose:
-    - To measure the performance of products, customers, or regions over time.
-    - For benchmarking and identifying high-performing entities.
-    - To track yearly trends and growth.
+- Measure the annual sales performance of individual products over time.
+- Compare current year sales against the previous year's sales (YoY growth/decline).
+- Benchmark product revenue against each product's historic average sales.
 */
+
 
 /* Analyze the yearly performance of products by comparing their sales 
 to both the average sales performance of the product and the previous year's sales */

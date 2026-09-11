@@ -1,24 +1,13 @@
 /*
-===============================================================================
-Customer Report
-===============================================================================
+Customer Report View Creation
 Purpose:
-    - This report consolidates key customer metrics and behaviors
-
-Highlights:
-    1. Gathers essential fields such as names, ages, and transaction details.
-	2. Segments customers into categories (VIP, Regular, New) and age groups.
-    3. Aggregates customer-level metrics:
-	   - total orders
-	   - total sales
-	   - total quantity purchased
-	   - total products
-	   - lifespan (in months)
-    4. Calculates valuable KPIs:
-	    - recency (months since last order)
-		- average order value
-		- average monthly spend
-===============================================================================
+- Creates or updates the 'gold.report_customers' view to consolidate core
+customer demographics, transaction metrics, and behavioral KPIs.
+- Features:
+1. Base data joining (sales fact + customer dimension) and age calculation.
+2. Customer-level aggregate statistics (orders, sales, quantity, lifespan).
+3. Demographic categorization (Age Groups) and Customer Segmentation (VIP/Regular/New).
+4. Derived KPIs (Recency, Average Order Value, Average Monthly Spend).  
 */
 
 -- =============================================================================
@@ -41,9 +30,8 @@ SELECT
 	f.sales_amount,
 	f.quantity,
 	c.customer_key,
-	c.cst_key,
-	CONCAT(c.cst_firstname,' ',c.cst_lastname) AS Full_name,
-	DATEDIFF(YEAR,c.bdate,GETdATE()) AS Age
+	CONCAT(c.First_name,' ',c.Last_name) AS Full_name,
+	DATEDIFF(YEAR,c.birthdate,GETdATE()) AS Age
 FROM gold.fact_sales f
 	LEFT JOIN gold.dim_customers c
 	ON f.customer_key= c.customer_key
@@ -56,7 +44,6 @@ FROM gold.fact_sales f
 
 SELECT 
 	customer_key,
-	cst_key,
 	Full_name,
 	Age,
 	COUNT(DISTINCT order_number) AS customer_total_orders,
@@ -68,14 +55,12 @@ SELECT
 FROM base_query
 GROUP BY 
 	customer_key,
-	cst_key,
 	Full_name,
 	Age
 
 	)
 SELECT
     customer_key,
-	cst_key,
 	Full_name,
 	Age,
 	CASE WHEN Age<20 THEN 'under_20'
@@ -106,3 +91,4 @@ SELECT
 		 ELSE total_sales / life_span
 	END AS avg_monthly_spend
 FROM customer_aggregation
+
