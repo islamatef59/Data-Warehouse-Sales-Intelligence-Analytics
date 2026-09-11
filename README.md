@@ -1,4 +1,4 @@
-# Data Warehouse Sales Intelligence & Analytics Platform
+# Data Warehouse Sales Intelligence & Analytics 
 
 ![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-red?style=for-the-badge&logo=microsoftsqlserver)
 ![T-SQL](https://img.shields.io/badge/Language-T--SQL-blue?style=for-the-badge)
